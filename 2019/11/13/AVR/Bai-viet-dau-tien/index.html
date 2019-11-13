@@ -5,14 +5,21 @@
   
 
   
-  <title>Hexo</title>
+  <title>Bài viết đầu tiên | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+  <meta name="description" content="Khởi tạo timer sử dụng CodeVisionAVRMô hình nhay led png Khởi tạo timer   Đầu tiên các bạn khởi tạo chương trình như bình thường sau đó vào tab timer&#x2F;counter để cài đặt. Ở đây ta sẽ làm việc với timer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bài viết đầu tiên">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;13&#x2F;AVR&#x2F;Bai-viet-dau-tien&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Khởi tạo timer sử dụng CodeVisionAVRMô hình nhay led png Khởi tạo timer   Đầu tiên các bạn khởi tạo chương trình như bình thường sau đó vào tab timer&#x2F;counter để cài đặt. Ở đây ta sẽ làm việc với timer">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;TranHungTb&#x2F;Lap-trinh-nhung&#x2F;master&#x2F;Timer-Counter&#x2F;nhayled.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;nhayled.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;TranHungTb&#x2F;Lap-trinh-nhung&#x2F;blob&#x2F;master&#x2F;Timer-Counter&#x2F;nhayled.gif">
+<meta property="og:updated_time" content="2019-11-13T11:29:22.752Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;TranHungTb&#x2F;Lap-trinh-nhung&#x2F;master&#x2F;Timer-Counter&#x2F;nhayled.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -59,111 +66,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-AVR/Led ma trận 8x8" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/13/AVR/Led%20ma%20tr%E1%BA%ADn%208x8/" class="article-date">
-  <time datetime="2019-11-13T11:19:37.000Z" itemprop="datePublished">2019-11-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/AVR/">AVR</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/13/AVR/Led%20ma%20tr%E1%BA%ADn%208x8/">Led ma trận 8x8</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Mach-mo-phong"><a href="#Mach-mo-phong" class="headerlink" title="Mạch mô phỏng"></a>Mạch mô phỏng</h1><p><a href="led-ma-tran\ledmatran64.jpg">mạch</a></p>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><h2 id="Hien-thi-chu"><a href="#Hien-thi-chu" class="headerlink" title="Hiển thị chữ"></a>Hiển thị chữ</h2><ul>
-<li>Ở đây 8 chân dương của led mình nối vào PORTB, 8 chân âm là PORTD của atmega8.</li>
-<li>Cách thực hiện việc quét led sẽ là xuất ra PORTD lần 1 để xuất mã led hiển thị hàng 1, xuất ra PORTB để bật đèn hàng một sau đó tắt led <strong>PORTD = 0xFF;</strong>, rồi lại quét lần hai. Vì ở đây mình dùng led 8x8 có 8 hàng 8 cột nên cần quét 8 lần để sáng lần lượt từ hàng 1 đến 8 để hiển thị 1 hình ảnh. Vì việc xuất ra PORTB và PORTD là 8 lần 1 hình nên ta đưa nó vào 1 mảng để hiển thị.</li>
-<li>ví dụ mảng cho chữ A:</li>
-</ul>
-<p><strong>unsigned char maled[8]={0x66,0x66,0x66,0x7E,0x7E,0x66,0x66,0x66};</strong> mã led xuất ra cổng PORTB</p>
-<p><strong>unsigned char maquet[8]={0xFE,0xFD,0xFB,0xF7,0xEF,0xDF,0xBF,0x7F};</strong> Xuất ra cổng PORTD bật từ hàng 1 đen 8</p>
-<ul>
-<li>Tiếp theo đó chúng ta viết 1 chương trình lặp chạy từ 0-7 để lấy và xuất dữ liệu trong các mảng</li>
-</ul>
-<p><strong>for(i=0;i&lt;8;i++)</strong></p>
-<p><strong>{</strong></p>
-<p><strong>PORTD = 0xFF; //tat toan bo LED</strong></p>
-<p><strong>PORTB = maled[i];  //xuat ma led dong i</strong></p>
-<p><strong>PORTD = maquet[i]; //bat sang dong i</strong></p>
-<p><strong>delay_ms(1);</strong></p>
-<p><strong>}</strong></p>
-<ul>
-<li>Code đầy đủ: <a href="\led-ma-tran\matranphim.c">Tại đây!</a></li>
-</ul>
-<h3 id="Ket-qua-hien-thi-chu-A"><a href="#Ket-qua-hien-thi-chu-A" class="headerlink" title="Kết quả hiển thị chữ A"></a>Kết quả hiển thị chữ A</h3><ul>
-<li>Mô phỏng với bóng led đơn.<br>Do phần mềm mô phỏng không chạy theo thời gian thực được nên có độ trễ lớn tạo ra hiện tượng này</li>
-</ul>
-<p><img src="%5Cled-ma-tran%5C64ledmatran.gif" alt="led ma trận git"></p>
-<ul>
-<li>Mô phỏng với module led matrix 8x8<br>Còn đây là module led matrix 8x8 đã được tối ưu hóa hơn nên hiển thị được sát với thời gian thực hơn, thật hơn.</li>
-</ul>
-<p><img src="%5Cled-ma-tran%5Cledmatrix8x8.gif" alt="led matrix 8x8"></p>
-<h2 id="Dem-tu-0-9"><a href="#Dem-tu-0-9" class="headerlink" title="Đếm từ 0-9"></a>Đếm từ 0-9</h2><ul>
-<li>Để việc đếm từ 0-9 cho thuận loại thì ta đưa mã led vào một mảng hai chiều</li>
-</ul>
-<p><strong>unsigned char maled10[10][8]=</strong></p>
-<p><strong>{</strong></p>
-<p><strong>{0x1C,0x22,0x32,0x2A,0x26,0x22,0x1C,0x00}, //0</strong></p>
-<p><strong>{0x08,0x0C,0x08,0x08,0x08,0x08,0x1C,0x00}, //1</strong></p>
-<p><strong>{0x1C,0x22,0x20,0x18,0x04,0x02,0x3E,0x00}, //2</strong></p>
-<p><strong>{0x1C,0x22,0x20,0x1C,0x20,0x22,0x1C,0x00}, //3</strong></p>
-<p><strong>{0x10,0x18,0x14,0x12,0x3E,0x10,0x10,0x00}, //4</strong></p>
-<p><strong>{0x3E,0x02,0x02,0x1E,0x20,0x22,0x1C,0x00}, //5</strong></p>
-<p><strong>{0x18,0x04,0x02,0x1E,0x22,0x22,0x1C,0x00}, //6</strong></p>
-<p><strong>{0x3E,0x20,0x10,0x08,0x04,0x04,0x04,0x00}, //7</strong></p>
-<p><strong>{0x1C,0x22,0x22,0x1C,0x22,0x22,0x1C,0x00}, //8</strong></p>
-<p><strong>{0x1C,0x22,0x22,0x3C,0x20,0x10,0x0C,0x00} //9</strong></p>
-<p><strong>};</strong></p>
-<p><strong>unsigned char maquet[8]={0xFE,0xFD,0xFB,0xF7,0xEF,0xDF,0xBF,0x7F};</strong>  //mã bật từ hàng 1-8</p>
-<ul>
-<li>Tiếp theo đó ta cũng viết một vòng lặp có 3 biến i, j ,q. Biến i để thực hiện việc thay đổi mã từ hàng 1 đến 8. Biến j để thay đổi mảng cần lấy tương ứng với các số từ 0-9. Để việc đếm số diễn ra từ từ thì ta cần delay để delay thời gian hiển thị thì ta cần dùng biến q vì ở đây ta không thể dùng hàm delay. Nếu dùng hàm delay thì dèn sẽ tắt chứ không hiển thị, vì vậy ta sẽ cho vòng lặp hiển thị một số lặp lại một số lần tương đối tùy theo ý để điều chỉnh thời gian hiển thị.</li>
-</ul>
-<p><strong>for(j=0; j&lt;10; j++)</strong></p>
-<p><strong>{</strong></p>
-<p><strong>for(q=0; q&lt;10; q++) //Thay đổi q để đếm nhanh chậm, nếu thực tế nên cho &lt;500 trở lên</strong></p>
-<p><strong>{</strong></p>
-<p><strong>for(i=0;i&lt;8; i++)</strong></p>
-<p><strong>{</strong></p>
-<p><strong>PORTD = 0xFF; //tat toan bo LED</strong></p>
-<p><strong>PORTB = maled10[j][i];  //xuat ma led dong i</strong></p>
-<p><strong>PORTD = maquet[i];</strong></p>
-<p><strong>delay_ms(1);</strong></p>
-<p><strong>}}}</strong></p>
-<h3 id="Ket-qua-dem-tu-0-9"><a href="#Ket-qua-dem-tu-0-9" class="headerlink" title="Kết quả đếm từ 0-9"></a>Kết quả đếm từ 0-9</h3><p>-Đây là mô phỏng nên có nhấp nháy vì nó chạy chậm so với thực tế còn thực tế thì sẽ ok hơn</p>
-<p><img src="%5Cled-ma-tran%5C0-9.gif" alt="0-9"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/13/AVR/Led%20ma%20tr%E1%BA%ADn%208x8/" data-id="ck2x7c6rx0006rssra8wqcf4i" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-AVR/Bai-viet-dau-tien" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-AVR/Bai-viet-dau-tien" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/13/AVR/Bai-viet-dau-tien/" class="article-date">
   <time datetime="2019-11-13T03:11:31.000Z" itemprop="datePublished">2019-11-13</time>
@@ -180,8 +83,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/13/AVR/Bai-viet-dau-tien/">Bài viết đầu tiên</a>
+    <h1 class="article-title" itemprop="name">
+      Bài viết đầu tiên
     </h1>
   
 
@@ -241,11 +144,23 @@
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/13/AVR/Led%20ma%20tr%E1%BA%ADn%208x8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Led ma trận 8x8
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
-
+</article>
 
 </section>
         
