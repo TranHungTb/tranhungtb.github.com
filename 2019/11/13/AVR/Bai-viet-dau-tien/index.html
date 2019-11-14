@@ -7,19 +7,19 @@
   
   <title>Bài viết đầu tiên | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Khởi tạo timer sử dụng CodeVisionAVRMô hình nhay led png Khởi tạo timer   Đầu tiên các bạn khởi tạo chương trình như bình thường sau đó vào tab timer&#x2F;counter để cài đặt. Ở đây ta sẽ làm việc với timer">
+  <meta name="description" content="Khởi tạo timer sử dụng CodeVisionAVRMô hình Khởi tạo timer Đầu tiên các bạn khởi tạo chương trình như bình thường sau đó vào tab timer&#x2F;counter để cài đặt. Ở đây ta sẽ làm việc với timer 0(đây là atmeg">
+<meta name="keywords" content="AVR">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bài viết đầu tiên">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;13&#x2F;AVR&#x2F;Bai-viet-dau-tien&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Khởi tạo timer sử dụng CodeVisionAVRMô hình nhay led png Khởi tạo timer   Đầu tiên các bạn khởi tạo chương trình như bình thường sau đó vào tab timer&#x2F;counter để cài đặt. Ở đây ta sẽ làm việc với timer">
+<meta property="og:description" content="Khởi tạo timer sử dụng CodeVisionAVRMô hình Khởi tạo timer Đầu tiên các bạn khởi tạo chương trình như bình thường sau đó vào tab timer&#x2F;counter để cài đặt. Ở đây ta sẽ làm việc với timer 0(đây là atmeg">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;TranHungTb&#x2F;Lap-trinh-nhung&#x2F;master&#x2F;Timer-Counter&#x2F;nhayled.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;nhayled.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;TranHungTb&#x2F;Lap-trinh-nhung&#x2F;blob&#x2F;master&#x2F;Timer-Counter&#x2F;nhayled.gif">
-<meta property="og:updated_time" content="2019-11-13T11:29:22.752Z">
+<meta property="og:updated_time" content="2019-11-14T08:02:58.303Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;TranHungTb&#x2F;Lap-trinh-nhung&#x2F;master&#x2F;Timer-Counter&#x2F;nhayled.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;nhayled.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -73,7 +73,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/AVR/">AVR</a>
+    <a class="article-category-link" href="/categories/ATmega8/">ATmega8</a>
   </div>
 
   </div>
@@ -92,11 +92,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Khoi-tao-timer-su-dung-CodeVisionAVR"><a href="#Khoi-tao-timer-su-dung-CodeVisionAVR" class="headerlink" title="Khởi tạo timer sử dụng CodeVisionAVR"></a>Khởi tạo timer sử dụng CodeVisionAVR</h1><h2 id="Mo-hinh"><a href="#Mo-hinh" class="headerlink" title="Mô hình"></a>Mô hình</h2><p><img src="https://raw.githubusercontent.com/TranHungTb/Lap-trinh-nhung/master/Timer-Counter/nhayled.png" alt="Nhayled"></p>
-<p><a href="/images/nhayled.png">nhay led png</a></p>
-<h2 id="Khoi-tao-timer"><a href="#Khoi-tao-timer" class="headerlink" title="Khởi tạo timer"></a>Khởi tạo timer</h2><img src="/images/nhayled.png" class="[class names]" title="0.png 0.png">
-
-<ul>
+        <h1 id="Khoi-tao-timer-su-dung-CodeVisionAVR"><a href="#Khoi-tao-timer-su-dung-CodeVisionAVR" class="headerlink" title="Khởi tạo timer sử dụng CodeVisionAVR"></a>Khởi tạo timer sử dụng CodeVisionAVR</h1><h2 id="Mo-hinh"><a href="#Mo-hinh" class="headerlink" title="Mô hình"></a>Mô hình</h2><img src="/images/nhayled.png" class="[class names]" title="0.png 0.png">
+<h2 id="Khoi-tao-timer"><a href="#Khoi-tao-timer" class="headerlink" title="Khởi tạo timer"></a>Khởi tạo timer</h2><ul>
 <li><p>Đầu tiên các bạn khởi tạo chương trình như bình thường sau đó vào tab timer/counter để cài đặt. Ở đây ta sẽ làm việc với timer 0(đây là atmega8535):</p>
 </li>
 <li><p>Clock Source: Có 3 chế độ <strong>System Clock</strong>, <strong>T0 pin faling Edge</strong> và <strong>T0 pin Rising Edge</strong>. Nếu bạn sử dụng atmega8 thì sẽ chỉ có 1 chế độ <strong>Systen clock</strong>. <strong>Clock System</strong> là chế độ sử dụng tần số hệ thống thì sẽ cài đặt ở phần <strong>Clock Value</strong>, hai chế độ còn lại là chế độ sử dụng xung ngoài cấp vào chân <strong>T0</strong> của vi điều khiển tương ứng là chế độ đếm theo cạnh xuống và lên và sử dụng trong chế độ Counter nên ta chọn <strong>System Clock</strong> trong chế độ <strong>timer</strong>.</p>
@@ -138,9 +135,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/13/AVR/Bai-viet-dau-tien/" data-id="ck2x83k7i000080sr0wy046i0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/13/AVR/Bai-viet-dau-tien/" data-id="ck2x88gxi0000e0srawe57yd3" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AVR/" rel="tag">AVR</a></li></ul>
+
     </footer>
   </div>
   
@@ -170,16 +169,30 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AVR/">AVR</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ATmega8/">ATmega8</a></li></ul>
     </div>
   </div>
 
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AVR/" rel="tag">AVR</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AVR/" style="font-size: 10px;">AVR</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
